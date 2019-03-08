@@ -37,7 +37,7 @@ public class Volley {
     public static RequestQueue newRequestQueue(Context context, BaseHttpStack stack) {
         BasicNetwork network;
         if (stack == null) {
-            if (Build.VERSION.SDK_INT >= 9) {
+            if (Build.VERSION.SDK_INT >= 9) {//TODO 没必要再判断SDK版本，舍弃Gingerbread以前的
                 network = new BasicNetwork(new HurlStack());
             } else {
                 // Prior to Gingerbread, HttpUrlConnection was unreliable.

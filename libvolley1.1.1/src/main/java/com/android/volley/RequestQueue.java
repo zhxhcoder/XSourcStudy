@@ -124,10 +124,10 @@ public class RequestQueue {
         stop(); // Make sure any currently running dispatchers are stopped.
         // Create the cache dispatcher and start it.
         mCacheDispatcher = new CacheDispatcher(mCacheQueue, mNetworkQueue, mCache, mDelivery);
-        mCacheDispatcher.start();
+        mCacheDispatcher.start(); //1个缓存调度进程
 
         // Create network dispatchers (and corresponding threads) up to the pool size.
-        for (int i = 0; i < mDispatchers.length; i++) {
+        for (int i = 0; i < mDispatchers.length; i++) { //默认4个网络调度进程
             NetworkDispatcher networkDispatcher =
                     new NetworkDispatcher(mNetworkQueue, mNetwork, mCache, mDelivery);
             mDispatchers[i] = networkDispatcher;
@@ -214,6 +214,7 @@ public class RequestQueue {
         request.setSequence(getSequenceNumber());
         request.addMarker("add-to-queue");
 
+        //如果不能缓存，则将请求添加到网络请求队列中
         // If the request is uncacheable, skip the cache queue and go straight to the network.
         if (!request.shouldCache()) {
             mNetworkQueue.add(request);

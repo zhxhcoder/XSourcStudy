@@ -4,10 +4,11 @@ public class Looper {
 
     private MessageQueue mQueue;
     //线程间数据隔离
-    static ThreadLocal<Looper> sThreadLocal;
+    static ThreadLocal<Looper> sThreadLocal=new ThreadLocal<>();
 
     private Looper() {
         mQueue = new MessageQueue();
+
     }
 
     //创建looper
@@ -40,6 +41,5 @@ public class Looper {
             }
         }
     }
-
 
 }

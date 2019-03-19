@@ -1,20 +1,23 @@
 package com.zhxh.libhandler;
 
+/**
+ * Created by zhxh on 2019/3/18
+ */
 public class Handler {
 
-    private Looper looper;
     public MessageQueue queue;
-
 
     public Handler() {
 
         Looper mLooper = Looper.myLooper();
+        queue = mLooper.mQueue;
 
     }
 
     public void sendMessage(Message msg) {
         msg.target = this;
 
+        queue.enqueueMessage(msg);
     }
 
     //处理消息

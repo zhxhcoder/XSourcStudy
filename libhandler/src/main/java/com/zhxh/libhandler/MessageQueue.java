@@ -4,6 +4,9 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+/**
+ * Created by zhxh on 2019/3/18
+ */
 public class MessageQueue {
 
     private Message[] items;

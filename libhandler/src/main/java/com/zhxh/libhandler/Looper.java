@@ -1,8 +1,11 @@
 package com.zhxh.libhandler;
 
+/**
+ * Created by zhxh on 2019/3/16
+ */
 public class Looper {
 
-    private MessageQueue mQueue;
+    public MessageQueue mQueue;
     //线程间数据隔离
     static ThreadLocal<Looper> sThreadLocal=new ThreadLocal<>();
 
@@ -29,12 +32,12 @@ public class Looper {
     public static void loop() {
         Looper self = myLooper();
         if (self == null) {
-            throw new RuntimeException("当前线程没有调用prepare()");
+            throw new RuntimeException("当前线程没有Looper对象，请调用prepare()");
         }
 
         MessageQueue queue = self.mQueue;
         //循环取出msg
-        for (; ; ) {
+        for (;;) {
             Message msg = queue.next();
             if (msg != null) {
                 msg.target.dispatchMessage(msg);

@@ -1,7 +1,9 @@
 package com.zhxh.libhandler;
 
 import java.util.UUID;
-
+/**
+ * Created by zhxh on 2019/3/19
+ */
 public class HandlerTest {
     public static void main(String[] args) {
         Looper.prepare();
@@ -25,7 +27,6 @@ public class HandlerTest {
                         Message msg = new Message();
                         synchronized (UUID.class) {
                             msg.obj = UUID.randomUUID().toString();
-
                         }
 
                         System.out.println("发送=" + Thread.currentThread().getName() + "-" + msg.toString());

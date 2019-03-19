@@ -7,7 +7,8 @@ public class Message {
     public Handler target;
     public Object obj;
     public int what;
-    public Message(){
+
+    public Message() {
 
     }
 

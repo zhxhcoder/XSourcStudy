@@ -31,21 +31,22 @@ public class MessageQueue {
 
     public void enqueueMessage(Message msg) {
         //消息队列满了，等待消费
-            try {
-                lock.lock();
-                while (count == 50) {
-
-                    notFull.await();
-
-                    items[putIndex] = msg;
-                    putIndex = (++putIndex == items.length) ? 0 : putIndex;
-                    count++;
-                }
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }finally {
-                lock.unlock();
+        try {
+            lock.lock();
+            while (count == 50) {
+                notFull.await();
             }
+
+            items[putIndex] = msg;
+            putIndex = (++putIndex == items.length) ? 0 : putIndex;
+            count++;
+            //已经消费了，继续生产
+            noEmpty.signalAll();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+            lock.unlock();
+        }
 
 
     }

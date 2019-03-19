@@ -7,7 +7,7 @@ public class Looper {
 
     public MessageQueue mQueue;
     //线程间数据隔离
-    static ThreadLocal<Looper> sThreadLocal=new ThreadLocal<>();
+    static ThreadLocal<Looper> sThreadLocal = new ThreadLocal<>();
 
     private Looper() {
         mQueue = new MessageQueue();
@@ -37,7 +37,7 @@ public class Looper {
 
         MessageQueue queue = self.mQueue;
         //循环取出msg
-        for (;;) {
+        for (; ; ) {
             Message msg = queue.next();
             if (msg != null) {
                 msg.target.dispatchMessage(msg);

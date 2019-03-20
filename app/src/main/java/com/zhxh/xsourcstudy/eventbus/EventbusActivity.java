@@ -7,9 +7,9 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.zhxh.xsourcstudy.R;
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
+//import org.greenrobot.eventbus.EventBus;
+//import org.greenrobot.eventbus.Subscribe;
+//import org.greenrobot.eventbus.ThreadMode;
 
 public class EventbusActivity extends AppCompatActivity {
     @BindView(R.id.tv_msg)

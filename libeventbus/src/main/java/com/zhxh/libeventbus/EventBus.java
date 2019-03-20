@@ -2,11 +2,9 @@ package com.zhxh.libeventbus;
 
 import android.util.Log;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by zhxh on 2019/3/16
@@ -50,11 +48,11 @@ public class EventBus {
         Class<?> clazz = obj.getClass();
 
 
-        while (clazz!=null){//同时也要寻找父类
+        while (clazz != null) {//同时也要寻找父类
 
             //判断当前是否是系统类，如果是，就退出玄幻
-            String name=clazz.getName();
-            if (name.startsWith("java.")||name.startsWith("javax.")||name.startsWith("android.")) {
+            String name = clazz.getName();
+            if (name.startsWith("java.") || name.startsWith("javax.") || name.startsWith("android.")) {
                 break;
             }
 
@@ -68,24 +66,61 @@ public class EventBus {
                 }
                 //获取方法中的参数，并判断是否唯一
 
-                Class<?>[] types=method.getParameterTypes();
-                if (types.length!=1) {
-                    Log.e("错误","方法只接受一个参数");
+                Class<?>[] types = method.getParameterTypes();
+                if (types.length != 1) {
+                    Log.e("错误", "方法只接受一个参数");
 
                 }
 
                 //获取线程模式
-                ThreadMode threadMode=subscribe.threadMode();
-                SubscribeMethod subscribeMethod=new SubscribeMethod(method,threadMode,types[0]);
+                ThreadMode threadMode = subscribe.threadMode();
+                SubscribeMethod subscribeMethod = new SubscribeMethod(method, threadMode, types[0]);
 
                 list.add(subscribeMethod);
             }
 
             //遍历父类
 
-            clazz=clazz.getSuperclass();
+            clazz = clazz.getSuperclass();
         }
 
         return list;
+    }
+
+
+    public void post(Object msg) {
+
+        Set<Object> set = cacheMap.keySet();
+        Iterator<Object> iterator = set.iterator();
+        while (iterator.hasNext()) {
+            Object obj = iterator.next();
+            List<SubscribeMethod> list = cacheMap.get(obj);
+
+            for (SubscribeMethod subscribeMethod :
+                    list) {
+                //对比两个类是否一致
+
+                if (subscribeMethod.getType().isAssignableFrom(msg.getClass())) {
+                    invoke(subscribeMethod,obj,msg);
+                }
+
+            }
+
+
+        }
+    }
+
+    private void invoke(SubscribeMethod subscribeMethod, Object obj, Object msg) {
+
+        Method method=subscribeMethod.getMethod();
+
+        try {
+            method.invoke(obj,msg);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
+
     }
 }

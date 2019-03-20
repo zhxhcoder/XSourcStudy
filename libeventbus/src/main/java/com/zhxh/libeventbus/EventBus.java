@@ -1,23 +1,30 @@
 package com.zhxh.libeventbus;
 
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
-import android.view.View;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * Created by zhxh on 2019/3/16
  */
 public class EventBus {
 
-
     private static volatile EventBus instance;
     private Map<Object, List<SubscribeMethod>> cacheMap;
 
+    private Handler mHandler;
+    private ExecutorService executorService;
+
     private EventBus() {
         cacheMap = new HashMap<>();
+        mHandler = new Handler(Looper.getMainLooper());
+        executorService = Executors.newCachedThreadPool();
     }
 
 
@@ -37,8 +44,7 @@ public class EventBus {
     public void register(Object obj) {
 
         List<SubscribeMethod> list = cacheMap.get(obj);
-        if (list != null) {
-
+        if (list == null) {
             list = findSubscribeMethods(obj);
             cacheMap.put(obj, list);
         }
@@ -56,7 +62,6 @@ public class EventBus {
     private List<SubscribeMethod> findSubscribeMethods(Object obj) {
         List<SubscribeMethod> list = new ArrayList<>();
         Class<?> clazz = obj.getClass();
-
 
         while (clazz != null) {//同时也要寻找父类
 
@@ -98,22 +103,51 @@ public class EventBus {
     }
 
 
-    public void post(Object msg) {
+    public void post(final Object msg) {
 
         Set<Object> set = cacheMap.keySet();
-        Iterator<Object> iterator = set.iterator();
-        while (iterator.hasNext()) {
-            Object obj = iterator.next();
+
+        for (final Object obj : set) {
             List<SubscribeMethod> list = cacheMap.get(obj);
 
-            for (SubscribeMethod subscribeMethod :
-                    list) {
-                //对比两个类是否一致
+            if (list != null) {
+                for (final SubscribeMethod subscribeMethod : list) {
+                    //对比两个类是否一致
+                    if (subscribeMethod.getType().isAssignableFrom(msg.getClass())) {
 
-                if (subscribeMethod.getType().isAssignableFrom(msg.getClass())) {
-                    invoke(subscribeMethod, obj, msg);
+                        switch (subscribeMethod.getThreadMode()) {
+                            case MAIN:
+                                if (Looper.myLooper() == Looper.getMainLooper()) {
+                                    invoke(subscribeMethod, obj, msg);
+                                } else {
+                                    mHandler.post(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            invoke(subscribeMethod, obj, msg);
+                                        }
+                                    });
+                                }
+
+                                break;
+                            case BACKGROUND:
+                                if (Looper.myLooper() == Looper.getMainLooper()) {
+
+                                    executorService.execute(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            invoke(subscribeMethod, obj, msg);
+                                        }
+                                    });
+                                } else {
+                                    invoke(subscribeMethod, obj, msg);
+                                }
+
+                                break;
+                        }
+
+                    }
+
                 }
-
             }
         }
     }

@@ -1,6 +1,7 @@
 package com.zhxh.libeventbus;
 
 import android.util.Log;
+import android.view.View;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -33,13 +34,22 @@ public class EventBus {
     }
 
 
-    public void regsiter(Object obj) {
+    public void register(Object obj) {
 
         List<SubscribeMethod> list = cacheMap.get(obj);
         if (list != null) {
 
             list = findSubscribeMethods(obj);
             cacheMap.put(obj, list);
+        }
+    }
+
+
+    public void unregister(Object obj) {
+
+        List<SubscribeMethod> list = cacheMap.get(obj);
+        if (list != null) {
+            cacheMap.remove(obj);
         }
     }
 
@@ -101,21 +111,19 @@ public class EventBus {
                 //对比两个类是否一致
 
                 if (subscribeMethod.getType().isAssignableFrom(msg.getClass())) {
-                    invoke(subscribeMethod,obj,msg);
+                    invoke(subscribeMethod, obj, msg);
                 }
 
             }
-
-
         }
     }
 
     private void invoke(SubscribeMethod subscribeMethod, Object obj, Object msg) {
 
-        Method method=subscribeMethod.getMethod();
+        Method method = subscribeMethod.getMethod();
 
         try {
-            method.invoke(obj,msg);
+            method.invoke(obj, msg);
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InvocationTargetException e) {
@@ -123,4 +131,6 @@ public class EventBus {
         }
 
     }
+
+
 }

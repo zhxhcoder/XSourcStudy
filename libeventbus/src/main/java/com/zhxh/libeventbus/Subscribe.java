@@ -12,6 +12,6 @@ import java.lang.annotation.Target;
 @Target(ElementType.METHOD)
 //注解会在class字节码文件中存在，jvm在加载时候可以通过反射获得
 @Retention(RetentionPolicy.RUNTIME)
-@interface  Subscribe {
+public @interface  Subscribe {
     ThreadMode threadMode() default ThreadMode.MAIN;
 }

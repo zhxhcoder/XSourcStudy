@@ -7,6 +7,10 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.zhxh.xsourcstudy.R;
+
+import com.zhxh.libeventbus.EventBus;
+import com.zhxh.libeventbus.Subscribe;
+import com.zhxh.libeventbus.ThreadMode;
 //import org.greenrobot.eventbus.EventBus;
 //import org.greenrobot.eventbus.Subscribe;
 //import org.greenrobot.eventbus.ThreadMode;
@@ -25,7 +29,7 @@ public class EventbusActivity extends AppCompatActivity {
         findViewById(R.id.btn_register).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EventBus.getDefault().register(this);
+                EventBus.getDefault().register(EventbusActivity.this);
             }
         });
 
@@ -33,7 +37,7 @@ public class EventbusActivity extends AppCompatActivity {
         findViewById(R.id.btn_unregister).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EventBus.getDefault().unregister(this);
+                EventBus.getDefault().unregister(EventbusActivity.this);
             }
         });
 

@@ -1,5 +1,6 @@
 package com.zhxh.libmonitor;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onRestart() {
         // TODO Auto-generated method stub
         super.onRestart();
+        System.out.println("--------main---------> time1: " + System.currentTimeMillis());
         System.out.println("--------main---------> onRestart");
     }
 
@@ -91,6 +93,20 @@ public class MainActivity extends AppCompatActivity {
         super.onRestoreInstanceState(savedInstanceState);
         info = savedInstanceState.getString("text");
         System.out.println("--------main---------> onRestoreInstanceState");
+
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(newBase);
+        System.out.println("--------main---------> time2: " + System.currentTimeMillis());
+
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        System.out.println("--------main---------> time3: " + System.currentTimeMillis());
 
     }
 }

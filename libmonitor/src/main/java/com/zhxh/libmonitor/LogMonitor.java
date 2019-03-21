@@ -17,7 +17,7 @@ public class LogMonitor {
     private HandlerThread mLogThread = new HandlerThread("BLOCK_INFO");
     private Handler mIoHandler;
     //这个时间戳的值，通常设置成不超过1000，你可以调低这个数值来优化你的代码。数值越低 暴露的信息就越多
-    private static final long TIME_BLOCK = 1000L;
+    private static final long TIME_BLOCK = 100L;
 
     private LogMonitor() {
         mLogThread.start();

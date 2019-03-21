@@ -24,25 +24,16 @@ public class MainActivity extends AppCompatActivity {
         System.out.println("--------main---------> onCreate");
         edtvTest = findViewById(R.id.edtv_test);
         btnTest = findViewById(R.id.btn_test);
-        btnTest.setOnClickListener(listener);
+        btnTest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it1 = new Intent();
+                it1.setClass(MainActivity.this, TestActivity.class);
+                startActivity(it1);
+            }
+        });
         Toast.makeText(getApplicationContext(), info, Toast.LENGTH_LONG).show();
     }
-
-    View.OnClickListener listener = new View.OnClickListener() {
-
-        @Override
-        public void onClick(View v) {
-            switch (v.getId()) {
-                case R.id.btn_test:
-                    Intent it1 = new Intent();
-                    it1.setClass(MainActivity.this, TestActivity.class);
-                    startActivity(it1);
-                    break;
-                default:
-                    break;
-            }
-        }
-    };
 
     @Override
     protected void onStart() {

@@ -2,8 +2,10 @@ package com.zhxh.libmonitor;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Point;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Display;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,6 +16,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText edtvTest = null;
     private Button btnTest = null;
     private String info = "";
+    Display display;
+    private Point mDisplaySize = new Point();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,6 +40,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         Toast.makeText(getApplicationContext(), info, Toast.LENGTH_LONG).show();
+
+        display = getWindowManager().getDefaultDisplay();
+        display.getSize(mDisplaySize);
+        System.out.println("--------main---------> display="+mDisplaySize.toString());
+
     }
 
     @Override

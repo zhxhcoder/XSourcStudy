@@ -9,13 +9,10 @@ public class Message {
     public int what;
 
     public Message() {
-
     }
 
     @Override
     public String toString() {
         return obj.toString();
     }
-
-
 }

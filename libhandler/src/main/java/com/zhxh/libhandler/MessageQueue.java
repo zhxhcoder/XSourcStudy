@@ -8,7 +8,6 @@ import java.util.concurrent.locks.ReentrantLock;
  * Created by zhxh on 2019/3/18
  */
 public class MessageQueue {
-
     private Message[] items;
     private int putIndex;
     private int takeIndex;
@@ -19,14 +18,11 @@ public class MessageQueue {
     private Condition noEmpty;
     private Condition notFull;
 
-
     public MessageQueue() {
-
         items = new Message[50];
         lock = new ReentrantLock();
         noEmpty = lock.newCondition();
         notFull = lock.newCondition();
-
     }
 
     public void enqueueMessage(Message msg) {
@@ -47,16 +43,12 @@ public class MessageQueue {
         } finally {
             lock.unlock();
         }
-
-
     }
 
 
     //出队
     public Message next() {
-
         Message msg = null;
-
         try {
             lock.lock();
             while (count == 0) {
@@ -74,8 +66,6 @@ public class MessageQueue {
         } finally {
             lock.unlock();
         }
-
-
         return msg;
     }
 }

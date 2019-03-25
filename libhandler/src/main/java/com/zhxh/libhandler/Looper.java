@@ -11,7 +11,6 @@ public class Looper {
 
     private Looper() {
         mQueue = new MessageQueue();
-
     }
 
     //创建looper
@@ -28,13 +27,11 @@ public class Looper {
     }
 
     //取出消息
-
     public static void loop() {
         Looper self = myLooper();
         if (self == null) {
             throw new RuntimeException("当前线程没有Looper对象，请调用prepare()");
         }
-
         MessageQueue queue = self.mQueue;
         //循环取出msg
         for (; ; ) {
@@ -44,5 +41,4 @@ public class Looper {
             }
         }
     }
-
 }

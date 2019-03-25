@@ -18,10 +18,8 @@ public class HandlerTest {
             }
         };
 
-
         for (int i = 0; i < 10; i++) {
             new Thread() {
-
                 @Override
                 public void run() {
                     while (true) {
@@ -36,7 +34,6 @@ public class HandlerTest {
                 }
             }.start();
         }
-
         Looper.loop();
     }
 }

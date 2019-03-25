@@ -36,13 +36,11 @@ public class EventBus {
                 }
             }
         }
-
         return instance;
     }
 
 
     public void register(Object obj) {
-
         List<SubscribeMethod> list = cacheMap.get(obj);
         if (list == null) {
             list = findSubscribeMethods(obj);
@@ -52,7 +50,6 @@ public class EventBus {
 
 
     public void unregister(Object obj) {
-
         List<SubscribeMethod> list = cacheMap.get(obj);
         if (list != null) {
             cacheMap.remove(obj);
@@ -64,13 +61,11 @@ public class EventBus {
         Class<?> clazz = obj.getClass();
 
         while (clazz != null) {//同时也要寻找父类
-
             //判断当前是否是系统类，如果是，就退出玄幻
             String name = clazz.getName();
             if (name.startsWith("java.") || name.startsWith("javax.") || name.startsWith("android.")) {
                 break;
             }
-
             //得到类中所有方法
             Method[] methods = clazz.getMethods();
             for (Method method : methods) {
@@ -84,32 +79,23 @@ public class EventBus {
                 Class<?>[] types = method.getParameterTypes();
                 if (types.length != 1) {
                     Log.e("错误", "方法只接受一个参数");
-
                 }
-
                 //获取线程模式
                 ThreadMode threadMode = subscribe.threadMode();
                 SubscribeMethod subscribeMethod = new SubscribeMethod(method, threadMode, types[0]);
-
                 list.add(subscribeMethod);
             }
-
             //遍历父类
-
             clazz = clazz.getSuperclass();
         }
-
         return list;
     }
 
 
     public void post(final Object msg) {
-
         Set<Object> set = cacheMap.keySet();
-
         for (final Object obj : set) {
             List<SubscribeMethod> list = cacheMap.get(obj);
-
             if (list != null) {
                 for (final SubscribeMethod subscribeMethod : list) {
                     //对比两个类是否一致
@@ -127,11 +113,9 @@ public class EventBus {
                                         }
                                     });
                                 }
-
                                 break;
                             case BACKGROUND:
                                 if (Looper.myLooper() == Looper.getMainLooper()) {
-
                                     executorService.execute(new Runnable() {
                                         @Override
                                         public void run() {
@@ -141,7 +125,6 @@ public class EventBus {
                                 } else {
                                     invoke(subscribeMethod, obj, msg);
                                 }
-
                                 break;
                         }
 
@@ -153,9 +136,7 @@ public class EventBus {
     }
 
     private void invoke(SubscribeMethod subscribeMethod, Object obj, Object msg) {
-
         Method method = subscribeMethod.getMethod();
-
         try {
             method.invoke(obj, msg);
         } catch (IllegalAccessException e) {
@@ -163,8 +144,5 @@ public class EventBus {
         } catch (InvocationTargetException e) {
             e.printStackTrace();
         }
-
     }
-
-
 }

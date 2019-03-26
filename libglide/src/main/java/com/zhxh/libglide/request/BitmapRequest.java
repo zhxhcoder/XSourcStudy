@@ -3,7 +3,7 @@ package com.zhxh.libglide.request;
 import android.content.Context;
 import android.widget.ImageView;
 import com.zhxh.libglide.listener.RequestListener;
-import com.zhxh.libglide.utils.MD5Utils;
+import com.zhxh.libglide.utils.MD5Util;
 
 import java.lang.ref.SoftReference;
 
@@ -40,7 +40,7 @@ public class BitmapRequest {
 
     public BitmapRequest load(String uri) {
         this.uri = uri;
-        this.urlMd5 = MD5Utils.md5(uri);
+        this.urlMd5 = MD5Util.md5(uri);
         return this;
     }
 

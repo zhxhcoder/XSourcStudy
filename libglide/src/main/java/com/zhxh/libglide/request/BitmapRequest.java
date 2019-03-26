@@ -11,6 +11,7 @@ import java.lang.ref.SoftReference;
  * Created by zhxh on 2019/3/26
  */
 public class BitmapRequest {
+    //生产者
 
     //缓存 key --url
     private String uri;
@@ -49,5 +50,51 @@ public class BitmapRequest {
         this.softReference = new SoftReference<>(imageView);
     }
 
+    public String getUri() {
+        return uri;
+    }
 
+    public void setUri(String uri) {
+        this.uri = uri;
+    }
+
+    public SoftReference<ImageView> getSoftReference() {
+        return softReference;
+    }
+
+    public void setSoftReference(SoftReference<ImageView> softReference) {
+        this.softReference = softReference;
+    }
+
+    public String getUrlMd5() {
+        return urlMd5;
+    }
+
+    public void setUrlMd5(String urlMd5) {
+        this.urlMd5 = urlMd5;
+    }
+
+    public int getLoadingResId() {
+        return loadingResId;
+    }
+
+    public void setLoadingResId(int loadingResId) {
+        this.loadingResId = loadingResId;
+    }
+
+    public Context getContext() {
+        return context;
+    }
+
+    public void setContext(Context context) {
+        this.context = context;
+    }
+
+    public RequestListener getRequestListener() {
+        return requestListener;
+    }
+
+    public void setRequestListener(RequestListener requestListener) {
+        this.requestListener = requestListener;
+    }
 }

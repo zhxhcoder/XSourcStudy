@@ -1,1 +1,1 @@
-include ':app', ':libvolley1.1.1', ':libhandler', ':libglide', ':libcompress', ':libeventbus', ':librecycleview', ':libmonitor'
+include ':app', ':libvolley1.1.1', ':libhandler', ':libglide', ':libcompress', ':libeventbus', ':librecycleview', ':libmonitor', ':module_processlive'

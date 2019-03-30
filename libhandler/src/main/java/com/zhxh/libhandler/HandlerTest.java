@@ -25,6 +25,7 @@ public class HandlerTest {
                     while (true) {
                         Message msg = new Message();
                         synchronized (UUID.class) {
+                            msg.what = 1;
                             msg.obj = UUID.randomUUID().toString();
                         }
 

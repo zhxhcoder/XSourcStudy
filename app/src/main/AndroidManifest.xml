@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.zhxh.xsourcstudy">
+    package="com.zhxh.xsourcstudy">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -12,39 +12,35 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity
+            android:name=".lifecycle.ActivityC"
+            android:launchMode="standard" />
+        <activity
+            android:name=".lifecycle.ActivityB"
+            android:launchMode="standard" />
+        <activity
+            android:name=".lifecycle.ActivityA"
+            android:launchMode="standard" />
         <activity android:name=".MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".volley.VolleyActivity">
-        </activity>
-        <activity android:name=".retrofit.RetrofitActivity">
-        </activity>
-        <activity android:name=".okhttp.OkhttpActivity">
-        </activity>
-        <activity android:name=".rxjava2.RxJava2Activity">
-        </activity>
-        <activity android:name=".eventbus.EventbusActivity">
-        </activity>
-        <activity android:name=".butterknife.ButterknifeActivity">
-        </activity>
-        <activity android:name=".dagger2.Dagger2Activity">
-        </activity>
-        <activity android:name=".arouter.ARouterActivity">
-        </activity>
-        <activity android:name=".leakcanary.LeakCanaryActivity">
-        </activity>
-        <activity android:name=".tinker.TinkerActivity">
-        </activity>
-        <activity android:name=".sophix.SophixActivity">
-        </activity>
-        <activity android:name=".glide.GlideActivity">
-        </activity>
-        <activity android:name=".fresco.FrescoActivity">
-        </activity>
+        <activity android:name=".volley.VolleyActivity" />
+        <activity android:name=".retrofit.RetrofitActivity" />
+        <activity android:name=".okhttp.OkhttpActivity" />
+        <activity android:name=".rxjava2.RxJava2Activity" />
+        <activity android:name=".eventbus.EventbusActivity" />
+        <activity android:name=".butterknife.ButterknifeActivity" />
+        <activity android:name=".dagger2.Dagger2Activity" />
+        <activity android:name=".arouter.ARouterActivity" />
+        <activity android:name=".leakcanary.LeakCanaryActivity" />
+        <activity android:name=".tinker.TinkerActivity" />
+        <activity android:name=".sophix.SophixActivity" />
+        <activity android:name=".glide.GlideActivity" />
+        <activity android:name=".fresco.FrescoActivity" />
     </application>
 
 </manifest>

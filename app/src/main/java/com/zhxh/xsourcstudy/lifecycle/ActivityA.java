@@ -5,26 +5,20 @@ import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.TextView;
 
 import com.zhxh.xsourcstudy.R;
 
 public class ActivityA extends AppCompatActivity {
-
     private static final String TAG = "ActivityA";
-
     TextView goBtn;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_a_layout);
         Log.d(TAG, "onCreate");
-
         goBtn = findViewById(R.id.goBtn);
         goBtn.setOnClickListener(v -> startActivity(new Intent(ActivityA.this, ActivityB.class)));
-
     }
 
     @Override

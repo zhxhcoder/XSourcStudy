@@ -10,7 +10,6 @@ import android.widget.TextView;
 import com.zhxh.xsourcstudy.R;
 
 public class ActivityB extends AppCompatActivity {
-
     private static final String TAG = "ActivityB";
     TextView goBtn;
 
@@ -19,9 +18,12 @@ public class ActivityB extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_b_layout);
         Log.d(TAG, "onCreate");
-
         goBtn = findViewById(R.id.goBtn);
-        goBtn.setOnClickListener(v -> startActivity(new Intent(ActivityB.this, ActivityC.class)));
+        goBtn.setOnClickListener(v -> {
+            //finish();
+            startActivity(new Intent(ActivityB.this, ActivityC.class));
+            finish();
+        });
     }
 
     @Override

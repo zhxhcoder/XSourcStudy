@@ -10,16 +10,13 @@ import android.widget.TextView;
 import com.zhxh.xsourcstudy.R;
 
 public class ActivityC extends AppCompatActivity {
-
     private static final String TAG = "ActivityC";
     TextView goBtn;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_c_layout);
         Log.d(TAG, "onCreate");
-
         goBtn = findViewById(R.id.goBtn);
         goBtn.setOnClickListener(v -> startActivity(new Intent(ActivityC.this, ActivityA.class)));
     }
@@ -28,7 +25,6 @@ public class ActivityC extends AppCompatActivity {
     public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
         super.onSaveInstanceState(outState, outPersistentState);
         Log.d(TAG, "onSaveInstanceState");
-
     }
 
     @Override

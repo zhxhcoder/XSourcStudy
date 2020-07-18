@@ -10,6 +10,7 @@ import com.zhxh.xsourcstudy.eventbus.EventbusActivity
 import com.zhxh.xsourcstudy.fresco.FrescoActivity
 import com.zhxh.xsourcstudy.glide.GlideActivity
 import com.zhxh.xsourcstudy.leakcanary.LeakCanaryActivity
+import com.zhxh.xsourcstudy.lifecycle.ActivityA
 import com.zhxh.xsourcstudy.okhttp.OkhttpActivity
 import com.zhxh.xsourcstudy.retrofit.RetrofitActivity
 import com.zhxh.xsourcstudy.rxjava2.RxJava2Activity
@@ -27,7 +28,6 @@ class MainActivity : AppCompatActivity() {
         //从原生中调用
         title_text.text = stringFromJNI()
 
-
         btn_volley.setOnClickListener { startActivity(Intent(this@MainActivity, VolleyActivity::class.java)) }
         btn_retrofit.setOnClickListener { startActivity(Intent(this@MainActivity, RetrofitActivity::class.java)) }
         btn_okhttp.setOnClickListener { startActivity(Intent(this@MainActivity, OkhttpActivity::class.java)) }
@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         btn_sophix.setOnClickListener { startActivity(Intent(this@MainActivity, SophixActivity::class.java)) }
         btn_glide.setOnClickListener { startActivity(Intent(this@MainActivity, GlideActivity::class.java)) }
         btn_fresco.setOnClickListener { startActivity(Intent(this@MainActivity, FrescoActivity::class.java)) }
-
+        btn_lifecycle.setOnClickListener { startActivity(Intent(this@MainActivity, ActivityA::class.java)) }
     }
 
     /**

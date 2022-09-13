@@ -18,7 +18,6 @@ public class KeepManager {
                 }
             }
         }
-
         return instance;
     }
 }

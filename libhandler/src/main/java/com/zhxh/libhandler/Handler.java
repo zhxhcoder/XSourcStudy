@@ -4,7 +4,6 @@ package com.zhxh.libhandler;
  * Created by zhxh on 2019/3/18
  */
 public class Handler {
-
     public MessageQueue queue;
 
     public Handler() {

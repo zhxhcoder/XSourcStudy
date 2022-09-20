@@ -1,13 +1,13 @@
 package com.zhxh.xsourcstudy.butterknife;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.zhxh.xsourcstudy.R;
 
-public class ButterknifeActivity extends AppCompatActivity {
+public class ButterknifeActivity extends Activity {
     @BindView( R.id.title_text)
     public TextView title_text;
     @Override

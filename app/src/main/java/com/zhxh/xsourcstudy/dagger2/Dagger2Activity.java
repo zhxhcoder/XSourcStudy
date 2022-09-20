@@ -1,10 +1,10 @@
 package com.zhxh.xsourcstudy.dagger2;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import com.zhxh.xsourcstudy.R;
 
-public class Dagger2Activity extends AppCompatActivity {
+public class Dagger2Activity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.zhxh.xsourcstudy.R;
@@ -25,10 +26,8 @@ public class FrescoActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fresco);
 
-
         Uri uri = Uri.parse(imgUrl);
         SimpleDraweeView draweeView = findViewById(R.id.simple_drawee_view);
         draweeView.setImageURI(uri);
-
     }
 }

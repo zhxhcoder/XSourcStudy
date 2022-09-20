@@ -1,10 +1,10 @@
 package com.zhxh.xsourcstudy.tinker;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import com.zhxh.xsourcstudy.R;
 
-public class TinkerActivity extends AppCompatActivity {
+public class TinkerActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

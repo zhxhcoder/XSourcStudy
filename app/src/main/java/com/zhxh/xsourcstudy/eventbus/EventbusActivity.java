@@ -1,6 +1,6 @@
 package com.zhxh.xsourcstudy.eventbus;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -15,7 +15,7 @@ import com.zhxh.libeventbus.ThreadMode;
 //import org.greenrobot.eventbus.Subscribe;
 //import org.greenrobot.eventbus.ThreadMode;
 
-public class EventbusActivity extends AppCompatActivity {
+public class EventbusActivity extends Activity {
     @BindView(R.id.tv_msg)
     public TextView tv_msg;
 

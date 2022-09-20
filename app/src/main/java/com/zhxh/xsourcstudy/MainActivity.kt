@@ -1,7 +1,7 @@
 package com.zhxh.xsourcstudy
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
+import android.app.Activity
 import android.os.Bundle
 import com.zhxh.xsourcstudy.arouter.ARouterActivity
 import com.zhxh.xsourcstudy.butterknife.ButterknifeActivity
@@ -19,7 +19,7 @@ import com.zhxh.xsourcstudy.tinker.TinkerActivity
 import com.zhxh.xsourcstudy.volley.VolleyActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

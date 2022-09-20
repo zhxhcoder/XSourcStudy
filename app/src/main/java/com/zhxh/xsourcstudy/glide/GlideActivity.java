@@ -1,7 +1,7 @@
 package com.zhxh.xsourcstudy.glide;
 
 import android.graphics.drawable.Drawable;
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import android.widget.ImageView;
 import butterknife.BindView;
@@ -11,7 +11,7 @@ import com.bumptech.glide.RequestBuilder;
 import com.bumptech.glide.request.RequestOptions;
 import com.zhxh.xsourcstudy.R;
 
-public class GlideActivity extends AppCompatActivity {
+public class GlideActivity extends Activity {
     @BindView(R.id.iv_show)
     public ImageView iv_show;
 

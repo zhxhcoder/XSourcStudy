@@ -2,14 +2,14 @@ package com.zhxh.xsourcstudy.lifecycle;
 
 import android.content.Intent;
 import android.os.PersistableBundle;
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
 import com.zhxh.xsourcstudy.R;
 
-public class ActivityC extends AppCompatActivity {
+public class ActivityC extends Activity {
     private static final String TAG = "ActivityC";
     TextView goBtn;
     @Override

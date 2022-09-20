@@ -1,10 +1,10 @@
 package com.zhxh.xsourcstudy.sophix;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import com.zhxh.xsourcstudy.R;
 
-public class SophixActivity extends AppCompatActivity {
+public class SophixActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

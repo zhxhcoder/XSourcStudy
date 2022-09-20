@@ -1,10 +1,10 @@
 package com.zhxh.xsourcstudy.leakcanary;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import com.zhxh.xsourcstudy.R;
 
-public class LeakCanaryActivity extends AppCompatActivity {
+public class LeakCanaryActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

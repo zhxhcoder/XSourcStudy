@@ -1,11 +1,13 @@
 package com.zhxh.xsourcstudy.retrofit;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.zhxh.xsourcstudy.R;
+
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -13,13 +15,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 import java.util.concurrent.TimeUnit;
 
-public class RetrofitActivity extends AppCompatActivity {
+public class RetrofitActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_retrofit);
-
 
 
         findViewById(R.id.btn_sync).setOnClickListener(new View.OnClickListener() {
@@ -38,7 +39,7 @@ public class RetrofitActivity extends AppCompatActivity {
 
     }
 
-    Retrofit getRetrot(){
+    Retrofit getRetrot() {
         Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
                 .serializeNulls()
                 .create();

@@ -1,14 +1,14 @@
 package com.zhxh.libmonitor;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class TestActivity extends AppCompatActivity {
+public class TestActivity extends Activity {
 
     private EditText edtvTest = null;
     private Button btnTest = null;

@@ -1,6 +1,6 @@
 package com.zhxh.xsourcstudy.volley;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -14,7 +14,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.zhxh.xsourcstudy.R;
 
-public class VolleyActivity extends AppCompatActivity {
+public class VolleyActivity extends Activity {
     @BindView( R.id.title_text)
     public TextView title_text;
 

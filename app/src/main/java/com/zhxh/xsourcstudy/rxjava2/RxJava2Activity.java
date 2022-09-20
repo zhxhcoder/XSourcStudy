@@ -1,6 +1,6 @@
 package com.zhxh.xsourcstudy.rxjava2;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -21,7 +21,7 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
-public class RxJava2Activity extends AppCompatActivity {
+public class RxJava2Activity extends Activity {
 
     private static final String TAG = "rxbus";
     private static final CharSequence LINE_SEPARATOR = "\n";

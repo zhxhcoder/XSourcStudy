@@ -25,7 +25,6 @@ import java.util.Map;
 
 /**
  * 专门管理RequestManager
- * @author gaos
  */
 public class RequestManagerRetriever implements Handler.Callback {
     static final String FRAGMENT_TAG = "com.bumptech.glide.manager";

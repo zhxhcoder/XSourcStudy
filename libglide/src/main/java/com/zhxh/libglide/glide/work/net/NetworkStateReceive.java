@@ -29,5 +29,4 @@ public class NetworkStateReceive extends BroadcastReceiver {
             }
         }
     }
-
 }
